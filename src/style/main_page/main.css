@@ -37,11 +37,12 @@ body {
 
 .navbar a {
     position: relative;
-    font-size: 18px;
+    font-size: 22px;
     color: #000;
     font-weight: 500px;
     text-decoration: none;
     margin-left: 40px;
+    text-shadow: 2px 4px 1px #B9B4C7;
 }
 
 .navbar a::before {
