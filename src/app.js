@@ -16,6 +16,7 @@ const server = http.createServer(app);
 const port = 3000;
 
 const loginRouter = require("./router/login");
+const signUpRouter = require("./router/signup"); 
 
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
@@ -33,3 +34,4 @@ server.listen(port, () => {
 });
 
 app.use("/login", loginRouter);
+app.use('/signup', signUpRouter);
