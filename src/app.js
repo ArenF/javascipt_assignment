@@ -9,6 +9,8 @@ const http = require('http');
 const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
+const sqlite3 = require('sqlite3').verbose();
+const fs = require('fs');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -35,3 +37,12 @@ server.listen(port, () => {
 
 app.use("/login", loginRouter);
 app.use('/signup', signUpRouter);
+
+// sql 데이터베이스 파일이 없다면 생성하기
+// sql 데이터베이스를 건드려 login.js 에서는 조회를, signup.js 에서는 삽입을
+// sql 데이터베이스를 건드리는 query.js 를 사용할 것
+const db = new sqlite3.Database('./db/MyDBLite.db');
+
+if (!fs.existsSync("./db/MyDBLite.db")) {
+    fs.writeFileSync("./db/MyDBLite.db");
+}

@@ -1,10 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const { use } = require('./login');
-const { send } = require('process');
-
-const db = new Map();
 const USER_COOKIE_KEY = 'USER';
 
 router.post("/", (req, res) => {

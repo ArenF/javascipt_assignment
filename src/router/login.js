@@ -3,7 +3,6 @@ const router = express.Router();
 const path = require("path");
 const cookieParser = require("cookie-parser");
 
-const db = new Map();
 const USER_COOKIE_KEY = 'USER'; 
 
 router.get("/", (req, res) => {
@@ -26,10 +25,6 @@ router.post("/", (req, res) => {
 
     res.cookie(USER_COOKIE_KEY, JSON.stringify(user));
     res.redirect("/");
-});
-
-router.post("/signup", (req, res) => {
-
 });
 
 module.exports = router;
