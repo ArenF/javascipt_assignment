@@ -10,7 +10,7 @@ router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../views/login.html"));
 });
 
-router.post("/signin", (req, res) => {
+router.post("/", (req, res) => {
     const {username, password } = req.body;
     const user = db.get("username");
 
