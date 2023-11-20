@@ -8,6 +8,7 @@ const express = require('express');
 const http = require('http');
 const app = express();
 const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -17,6 +18,8 @@ const port = 3000;
 const loginRouter = require("./router/login");
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
+app.use(express.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
     // app.js 가 있는 위치에서 views 폴더 안 index.html 파일을 클라이언트에게 보낸다.
