@@ -1,0 +1,9 @@
+{
+    "ignore": [
+        "src/public",
+        "src/views",
+        "node_modules",
+        ".git",
+        ".gitignore"
+    ]
+}
