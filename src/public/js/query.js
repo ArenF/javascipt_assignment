@@ -9,7 +9,7 @@ function getDB() {
         fs.writeFileSync(dbPath, "");
     }
 
-    let db = new sqlite3.Database(dbPath, sqlite3.OPEN_READWRITE, (err) => {
+    let db = new sqlite3.Database(dbPath, (err) => {
         if (err) {
             console.error(err.message);
             console.error(dbPath);
@@ -18,7 +18,11 @@ function getDB() {
         }
     });
 
+    
+
     return db;
 }
+
+
 
 module.exports = getDB();

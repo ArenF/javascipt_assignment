@@ -41,13 +41,26 @@ app.use('/signup', signUpRouter);
 // sql 데이터베이스를 건드려 login.js 에서는 조회를, signup.js 에서는 삽입을
 // sql 데이터베이스를 건드리는 query.js 를 사용할 것
 
-// const query = require('./public/js/query');
+const query = require('./public/js/query');
 
-// query.all(`SELECT * FROM student`, [], (err, rows) => {
-//     if (err) {
-//         throw err;
-//     }
-//     rows.forEach((row) => {
-//         console.log(row);
-//     });
-// });
+query.serialize(() => {
+    query.each("CREATE TABLE IF NOT EXISTS user(id integer primary key autoincrement, username text, password text)");
+    
+    query.all("SELECT * FROM user", [], (err, rows) => {
+        if (err) {
+            console.error(err.message);
+        } else {
+            rows.forEach((row) => {
+                console.log(`name : ${row.username} \npassword : ${row.password}`);
+            });
+        }
+    });
+
+    // query.close((err) => {
+    //     if (err) {
+    //         console.error(err.message);
+    //     } else {
+    //         console.log("Close database Connection");
+    //     }
+    // });
+});
