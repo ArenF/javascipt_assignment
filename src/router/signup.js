@@ -12,14 +12,13 @@ router.post("/", (req, res) => {
         query.run(registerQuery, (err) => {
             if (err) {
                 console.error(err.message);
-                return;
+                throw new Error("오류가 발생하였습니다.");
             } else {
                 console.log(`${username}님이 회원가입되었습니다.`);
+                res.send(`<script>location.href = "/login";</script>`);
             }
         });
     });
-
-    res.redirect('/login');
 });
 
 router.get("/", (req, res) => {

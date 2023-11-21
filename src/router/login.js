@@ -38,12 +38,13 @@ router.post("/", (req, res) => {
                 // res.redirect("/login");
                 res.send('<script>alert("아이디 또는 비밀번호가 잘못되었습니다.");location.href="/login"</script>');
                 return;
+                
+            } else {
+                req.session.loggedIn = true;
+                res.send(`<script>window.location.href = "/";</script>`);
             }
         });
     });
-
-    req.session.loggedIn = true;
-    res.redirect("/");
 });
 
 module.exports = router;
