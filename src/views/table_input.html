@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>성적 입력</title>
+    <link rel="stylesheet" href="/style/table_page/table_input.css" type="text/css">
+</head>
+<body>
+    <!-- 이름, 학번, 성적,  -->
+    <form name="input_table" action="/table_input" method="post">
+        <div class="info">
+            <span class="title"><b>성적 입력 폼!</b></span>
+            <p class="description">모든 값을 입력 후에 추가 버튼을 누르세요.</p>
+        </div>
+        <div class="name-fields">
+            <input type="text" name="name" placeholder="이름" />
+            <input type="text" name="student_code" placeholder="학번">
+        </div>
+        <div class="input-fields">
+            
+            <input type="text" maxlength="1" name="sub_korean" placeholder="국어">
+            <input type="text" maxlength="1" name="sub_english" placeholder="영어">
+            <input type="text" maxlength="1" name="sub_math" placeholder="수학">
+        </div>
+        <div class="action-btns">
+            <input type="submit" name="table_input">
+        </div>
+    </form>
+</body>
+</html>

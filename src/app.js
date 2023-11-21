@@ -8,25 +8,59 @@ const express = require('express');
 const http = require('http');
 const app = express();
 const bodyParser = require("body-parser");
-
-app.use(bodyParser.urlencoded({ extended: false }));
+const cookieParser = require("cookie-parser");
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 
 const server = http.createServer(app);
 const port = 3000;
 
-const loginRouter = require("./router/login");
-
+// 서버 설정  ex*) 쿠키, 프론트엔드 폴더 설정, 세션 설정
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/', (req, res) => {
-    // app.js 가 있는 위치에서 views 폴더 안 index.html 파일을 클라이언트에게 보낸다.
-    // 즉, index.html 파일을 서버에서 실행시킨다.
-    res.sendFile(__dirname + "/views/index.html");
-
-});
+app.use(cookieParser());
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    store: new FileStore()
+}));
+app.set('views', path.join(__dirname + "./views"));
 
 server.listen(port, () => {
     console.log(`it's running on http://localhost:${port}`);
 });
 
+const indexRouter = require("./router/index");
+const loginRouter = require("./router/login");
+const signUpRouter = require("./router/signup");
+const tableRouter = require("./router/table");
+
+// 라우터 설정
+app.use("/", indexRouter);
 app.use("/login", loginRouter);
+app.use('/signup', signUpRouter);
+app.use('/table', tableRouter);
+
+
+//데이터베이스 설정
+
+const query = require('./public/js/query');
+
+query.serialize(() => {
+    query.each("CREATE TABLE IF NOT EXISTS user(id integer primary key autoincrement, username text, password text)");
+
+    // 테스트 코드용 데이터베이스 전체 조회
+
+    // query.all("SELECT * FROM user", [], (err, rows) => {
+    //     if (err) {
+    //         console.error(err.message);
+    //     } else {
+    //         rows.forEach((row) => {
+    //             console.log(`name : ${row.username} \npassword : ${row.password}`);
+    //         });
+    //     }
+    // });
+});
+

@@ -1,0 +1,103 @@
+* {
+    box-sizing: border-box;
+    border: none;
+    --black: #000000;
+    --ch-black: #141414;
+    --eer-black: #1b1b1b;
+    --night-rider: #2e2e2e;
+    --white: #ffffff;
+    --af-white: #f3f3f3;
+    --ch-white: #e1e1e1;
+    --tomato: #fa5656;
+}
+
+form {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, 50%);
+    font-family: Helvetica, sans-serif;
+    padding: 25px;
+    display: flex;
+    max-width: 420px;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    color: var(--af-white);
+    background-color: var(--black);
+    border-radius: 8px;
+    position: relative;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, .1);
+}
+
+.info {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+/* --- name fields 에 들어가는 것들 */
+
+form .name-fields {
+    display: flex;
+    height: 32px;
+    text-align: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+form .name-fields input {
+    opacity: 1;
+    display: block;
+    border: none;
+    outline: none;
+    width: 80%;
+    padding-inline-start: 13px 18px;
+    margin: 0 20px 0 0;
+    padding-left: 15px;
+    font-size: 1em;
+    border-radius: 100px;
+    background: #3c3c3c;
+    color: #fff;
+}
+
+form .name-fields input:hover {
+    
+}
+
+/* --- input fields 에 들어가는 것들 --- */
+
+form .input-fields {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+form .input-fields input {
+    position: relative;
+    height: 2.5em;
+    width: 2.5em;
+    outline: none;
+    text-align: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 1.5rem;
+    color: var(--af-white);
+    border-radius: 5px;
+    border: 2.5px solid var(--eer-black);
+    background-color: var(--eer-black);
+}
+
+form .input-fields input:focus {
+    border: 1px solid var(--af-white);
+    box-shadow: inset 10px 10px 10px rgba(0, 0, 0, .15);
+    transform: scale(1.05);
+    transition: 0.5s;
+}
