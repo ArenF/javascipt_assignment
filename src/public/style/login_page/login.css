@@ -70,7 +70,7 @@ body{
     padding-top: 30px;
     cursor: pointer;
     font-size: 20px;
-    color: #000;
+    font-weight: 400;
 }
 
 .find a {
