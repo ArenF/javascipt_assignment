@@ -15,20 +15,11 @@ const FileStore = require('session-file-store')(session);
 const server = http.createServer(app);
 const port = 3000;
 
-const indexRouter = require("./router/index");
-const loginRouter = require("./router/login");
-const signUpRouter = require("./router/signup"); 
-
-// 라우터 설정
-app.use("/", indexRouter);
-app.use("/login", loginRouter);
-app.use('/signup', signUpRouter);
-
 // 서버 설정  ex*) 쿠키, 프론트엔드 폴더 설정, 세션 설정
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
-app.use(express.urlencoded({ extended: false }));
 app.use(session({
     secret: 'keyboard cat',
     resave: false,
@@ -40,6 +31,17 @@ app.set('views', path.join(__dirname + "./views"));
 server.listen(port, () => {
     console.log(`it's running on http://localhost:${port}`);
 });
+
+const indexRouter = require("./router/index");
+const loginRouter = require("./router/login");
+const signUpRouter = require("./router/signup");
+const tableRouter = require("./router/table");
+
+// 라우터 설정
+app.use("/", indexRouter);
+app.use("/login", loginRouter);
+app.use('/signup', signUpRouter);
+app.use('/table', tableRouter);
 
 
 //데이터베이스 설정

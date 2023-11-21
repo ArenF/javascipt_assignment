@@ -4,9 +4,11 @@ const path = require('path');
 const query = require('../public/js/query');
 
 router.post("/", (req, res) => {
+
     const {username, password} = req.body;
     
     query.serialize(() => {
+
         const registerQuery = `insert into user(username, password) values('${username}', '${password}')`;
 
         query.run(registerQuery, (err) => {

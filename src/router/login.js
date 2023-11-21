@@ -3,7 +3,6 @@ const express = require("express");
 const router = express.Router();
 const path = require("path");
 
-const cookieParser = require("cookie-parser");
 const query = require("../public/js/query");
 
 router.get("/", (req, res) => {
@@ -22,12 +21,6 @@ router.post("/", (req, res) => {
         const selectQuery = "select username, password from user where username = ? AND password = ?;";
 
         query.get(selectQuery, [`${id}`, `${pass}`], (err, row) => {
-            // // 로그인 창의 input 에 입력했던 데이터를 모두 초기화
-            // const usernameInput = document.getElementById("username");
-            // const passwordInput = document.getElementById("password");
-
-            // usernameInput.value = "";
-            // passwordInput.value = "";
 
             // 입력 중에 오류나 로그인이 발생하면 warning_message 를 찍음
             if (row === undefined || err) {

@@ -16,24 +16,11 @@ function getDB() {
             console.error(err.message);
             console.error(dbPath);
         } else {
-            console.log(`Connected to the database.`);
+            console.log("Connected to the DB");
         }
     });
 
     return db;
-}
-
-function closeDB() {
-
-    if (db === null) {
-        return;
-    }
-
-    db.close((err) => {
-        if (err) {
-            console.error(err.message);
-        }
-    });
 }
 
 module.exports = getDB();
