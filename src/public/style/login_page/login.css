@@ -42,7 +42,7 @@ body{
 .wrap .login {
     width: 100%;
     height: 40px;
-    background: #da89c1;
+    background: white;
     margin: 20px 0;
     border-radius: 15px;
    
@@ -61,25 +61,26 @@ body{
 }
 
 .login input::placeholder {
-    color: aliceblue;
+    font-size: 13px;
+    color: gray;
 }
 
 .wrap .find {
-    text-align: right;
+    text-align: left;
     padding-top: 30px;
-    padding-right: 15px;
+    cursor: pointer;
+    font-size: 20px;
+    font-weight: 400;
 }
 
-.wrap .find label {
-    padding: 7px;
-    margin-right: 15px;
-    background-color: aquamarine;
-    border-radius: 15px;
-    border: 1px solid #323232;
+.find a {
+    color: blue;
+    font-size: 18px;
+    text-decoration: none;
 }
 
-.find label a:visited {
-    color: #444444;
+.find a:hover {
+    text-decoration: underline;
 }
 
 .end {
@@ -90,4 +91,5 @@ body{
     width: 100%;
     height: 50px;
     font-size: 20px;
+    background-color: #0074e0;
 }
