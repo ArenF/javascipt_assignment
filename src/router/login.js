@@ -1,16 +1,13 @@
 const express = require("express");
+
 const router = express.Router();
 const path = require("path");
+
 const cookieParser = require("cookie-parser");
 const query = require("../public/js/query");
-const { warn } = require("console");
 
 router.get("/", (req, res) => {
     res.sendFile(path.join(__dirname, "../views/login.html"));
-});
-
-router.post("/error", (req, res) => {
-    const { type } = req.body;
 });
 
 router.post("/", (req, res) => {
@@ -39,13 +36,13 @@ router.post("/", (req, res) => {
                 }
 
                 // res.redirect("/login");
-                res.send(`<script>alert("아이디나 패스워드가 틀렸습니다."); location.href = "/login";</script>`);
+                res.send('<script>alert("아이디 또는 비밀번호가 잘못되었습니다.");location.href="/login"</script>');
                 return;
             }
         });
     });
 
-    res.cookie(id, JSON.stringify(user));
+    req.session.loggedIn = true;
     res.redirect("/");
 });
 

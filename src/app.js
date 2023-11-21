@@ -11,6 +11,9 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const sqlite3 = require('sqlite3').verbose();
 
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
+
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const server = http.createServer(app);
@@ -22,6 +25,12 @@ const signUpRouter = require("./router/signup");
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
+app.use(session({
+    secret: 'keyboard cat',
+    resave: false,
+    saveUninitialized: true,
+    store: new FileStore()
+}));
 
 app.get('/', (req, res) => {
     // app.js 가 있는 위치에서 views 폴더 안 index.html 파일을 클라이언트에게 보낸다.

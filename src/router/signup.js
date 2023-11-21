@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 const path = require('path');
-const USER_COOKIE_KEY = 'USER';
 const query = require('../public/js/query');
 
 router.post("/", (req, res) => {

@@ -18,8 +18,6 @@ function getDB() {
         }
     });
 
-    
-
     return db;
 }
 
