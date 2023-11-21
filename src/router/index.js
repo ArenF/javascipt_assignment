@@ -1,6 +1,6 @@
+//서버 라우터 설정
 const express = require('express');
 const router = express.Router();
-
 const path = require('path');
 
 router.get('/', (req, res) => {

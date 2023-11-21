@@ -6,12 +6,13 @@
 const path = require('path');
 const express = require('express');
 const http = require('http');
-const app = express();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
 
+// 서버 설정
+const app = express();
 const server = http.createServer(app);
 const port = 3000;
 
@@ -28,16 +29,17 @@ app.use(session({
 }));
 app.set('views', path.join(__dirname + "./views"));
 
+//서버 실행
 server.listen(port, () => {
     console.log(`it's running on http://localhost:${port}`);
 });
 
+//라우터 설정
 const indexRouter = require("./router/index");
 const loginRouter = require("./router/login");
 const signUpRouter = require("./router/signup");
 const tableRouter = require("./router/table");
 
-// 라우터 설정
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use('/signup', signUpRouter);
@@ -45,10 +47,10 @@ app.use('/table', tableRouter);
 
 
 //데이터베이스 설정
-
 const query = require('./public/js/query');
 
 query.serialize(() => {
+    //SQL문 user 테이블 존재하지 않을 시 테이블 생성
     query.each("CREATE TABLE IF NOT EXISTS user(id integer primary key autoincrement, username text, password text)");
 
     // 테스트 코드용 데이터베이스 전체 조회
