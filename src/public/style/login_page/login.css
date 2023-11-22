@@ -48,6 +48,10 @@ body{
    
 }
 
+.wrap .remem {
+    color: #fff;
+}
+
 
 .wrap .login input {
     background: transparent;
@@ -69,12 +73,12 @@ body{
     text-align: left;
     padding-top: 30px;
     cursor: pointer;
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 15px;
+    color: #fff;
 }
 
 .find a {
-    color: blue;
+    color: skyblue;
     font-size: 18px;
     text-decoration: none;
 }
