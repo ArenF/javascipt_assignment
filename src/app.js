@@ -10,11 +10,12 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
+require('dotenv').config();
 
 // 서버 설정
 const app = express();
 const server = http.createServer(app);
-const port = 3000;
+const port = process.env.PORT;
 
 // 서버 설정  ex*) 쿠키, 프론트엔드 폴더 설정, 세션 설정
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -22,7 +23,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(cookieParser());
 app.use(session({
-    secret: 'keyboard cat',
+    secret: process.env.SESSION_KEY,
     resave: false,
     saveUninitialized: true,
     store: new FileStore()

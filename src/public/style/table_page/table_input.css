@@ -69,8 +69,11 @@ form .name-fields input {
     color: #fff;
 }
 
-form .name-fields input:hover {
-    
+form .name-fields input:focus {
+    border: 1px solid var(--af-white);
+    box-shadow: inset 10px 10px 10px rgba(0, 0, 0, .15);
+    transform: scale(1.05);
+    transition: 0.5s;
 }
 
 /* --- input fields 에 들어가는 것들 --- */
@@ -100,4 +103,25 @@ form .input-fields input:focus {
     box-shadow: inset 10px 10px 10px rgba(0, 0, 0, .15);
     transform: scale(1.05);
     transition: 0.5s;
+}
+
+form .action-btns {
+    display: flex;
+    margin-top: 20px;
+    gap: 0.5rem;
+}
+
+.verify_button {
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--night-rider);
+    text-shadow: none;
+    background-color: var(--af-white);
+    box-shadow: transparent;
+    border: 1px solid var(--af-white);
+    transition: 0.3s ease;
+    user-select: none;
 }

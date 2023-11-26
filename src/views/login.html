@@ -11,30 +11,29 @@
     <div class="line"></div>
     <div class="blur"></div>
     <div class="wrap">
-        <form action="/login" method="post">
-            <div class="header">
-                <h1>Login</h1>
-                <br>
-            </div>
-            <div class="login">
-                <input type="text" name="id" placeholder="Username">
-            </div>
-            <div class="login">
-                <input type="password" name="pass" placeholder="Password">
-            </div>
-            <div class="remem">
-                <input type="checkbox"> 회원 정보를 저장
-            </div>
-            <div class="end">
-                <input class="login-btn" type="submit" value="로그인">
-            </div>
-            <div class="find">
-                <p>
-                    계정이 없으신가요?
-                    <a href="/signup"> 회원 가입 </a>
-                </p>
-            </div>
-        </form>
+        <div class="header">
+            <h1>Login</h1>
+            <br>
+        </div>
+        <div class="login">
+            <input type="text" id="username" name="id" placeholder="Username">
+        </div>
+        <div class="login">
+            <input type="password" id="password" name="pass" placeholder="Password">
+        </div>
+        <div class="remem">
+            <input id="isSave" type="checkbox"> 회원 정보를 저장
+        </div>
+        <div class="end">
+            <input class="login-btn" type="button" onclick="login_verify()" value="로그인">
+        </div>
+        <div class="find">
+            <p>
+                계정이 없으신가요?
+                <a href="/signup"> 회원 가입 </a>
+            </p>
+        </div>
     </div>
+    <script src="/js/script_login.js"></script>
 </body>
 </html>

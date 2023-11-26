@@ -13,12 +13,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    const { id, pass } = req.body;
-
-    const user = {        
-        id,
-        pass
-    }
+    const { id, pass } = req.body;  
     
     query.serialize(() => {
         const selectQuery = "select username, password from user where username = ? AND password = ?;";
