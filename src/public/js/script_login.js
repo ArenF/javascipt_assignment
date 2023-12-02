@@ -17,21 +17,32 @@ window.onload = function() {
     // }
 }
 
-const username = document.getElementById("username");
-const password = document.getElementById("password");
+const usernameInput = document.getElementById("username");
+const passwordInput = document.getElementById("password");
 
-function login_verify() {
+const login_btn = document.getElementsByClassName("login-btn")[0];
+
+login_btn.addEventListener("click", (event) => {
+    event.preventDefault();
+
     console.log("로그인 실행");
+    const id = usernameInput.value;
+    const pass = passwordInput.value;
+
+    const user = {
+        id, pass
+    };
+
+    const formData = new FormData();
+    formData.append("id", id); formData.append("pass", pass);
+    const payload = new URLSearchParams(formData);
+
     fetch("/login", {
         method: 'POST',
-        body: {
-            id: username.value,
-            pass: password.value
-        }
-    }).then(data => {
-        console.log(data);
-    }).catch(err => {
-        console.log(err);
-        console.log(response.json());
-    });
-}
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: payload
+    })
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(err => console.error(err));
+});
