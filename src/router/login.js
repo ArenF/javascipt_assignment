@@ -13,8 +13,10 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    const { id, pass } = req.body;  
-    
+
+    console.log(req.body);
+    const { id, pass } = req.body;
+
     query.serialize(() => {
         const selectQuery = "select username, password from user where username = ? AND password = ?;";
 
@@ -26,12 +28,21 @@ router.post("/", (req, res) => {
                     console.error(err.message);
                 }
 
+                // console.log(`username : ${id}\npassword : ${pass}`);
+                
+                const user = {
+                    id, pass
+                };
+
                 // res.redirect("/login");
-                res.send('<script>alert("아이디 또는 비밀번호가 잘못되었습니다.");location.href="/login"</script>');
+                res.status(200).json(user);
+                
+                // res.send('<script>alert("아이디 또는 비밀번호가 잘못되었습니다.");location.href="/login"</script>');
                 return;
                 
             } else {
                 req.session.loggedIn = true;
+                req.session.user = user;
                 res.send(`<script>window.location.href = "/";</script>`);
             }
         });

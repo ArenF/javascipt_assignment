@@ -4,6 +4,7 @@ const button = document.getElementById("submit_button");
 const formTable = document.querySelector("#input_table");
 const nameInput = document.getElementsByName("name")[0];
 const codeInput = document.getElementsByName("student_code")[0];
+<<<<<<< HEAD
 const korInput = document.getElementsByName("sub_korean")[0];
 const engInput = document.getElementsByName("sub_english")[0];
 const mathInput = document.getElementsByName("sub_math")[0];
@@ -30,3 +31,30 @@ button.addEventListener("click", (event) => {
 });
 
 button.addEventListener("submit", button);
+=======
+const subjectInputs = document.getElementsByClassName("subject");
+// const korInput = document.getElementsByName("sub_korean")[0];
+// const engInput = document.getElementsByName("sub_english")[0];
+// const matInput = document.getElementsByName("sub_math")[0];
+
+for (i = 0; i < subjectInputs.length; i++) {
+    let subInput = subjectInputs[i];
+
+    subInput.addEventListener("change", () => {
+        const val = subInput.value;
+        subInput.value = val.toUpperCase();
+    });
+}
+
+button.addEventListener("click", (event) => {
+    event.preventDefault();
+
+
+    // 초기화
+    codeInput.value = '';
+    nameInput.value = '';
+    for (i = 0; i < subjectInputs.length; i++) {
+        subjectInputs[i].value = '';
+    }
+});
+>>>>>>> 194341fe5539221cf6471cedae13193559a2b82c
