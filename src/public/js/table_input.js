@@ -1,21 +1,15 @@
 
 const button = document.getElementById("submit_button");
 
-const formTable = document.querySelector("#input_table");
 const nameInput = document.getElementsByName("name")[0];
 const codeInput = document.getElementsByName("student_code")[0];
-<<<<<<< HEAD
 const korInput = document.getElementsByName("sub_korean")[0];
 const engInput = document.getElementsByName("sub_english")[0];
 const mathInput = document.getElementsByName("sub_math")[0];
 
-const HIDDEN_CLASSNAME = "hidden";
-
 button.addEventListener("click", (event) => {
     event.preventDefault();
     console.log("Hello world!");
-
-    formTable.classList.add(HIDDEN_CLASSNAME);
 
     const stdName = nameInput.value;
     const stdCode = codeInput.value;
@@ -31,7 +25,7 @@ button.addEventListener("click", (event) => {
 });
 
 button.addEventListener("submit", button);
-=======
+
 const subjectInputs = document.getElementsByClassName("subject");
 // const korInput = document.getElementsByName("sub_korean")[0];
 // const engInput = document.getElementsByName("sub_english")[0];
@@ -57,4 +51,3 @@ button.addEventListener("click", (event) => {
         subjectInputs[i].value = '';
     }
 });
->>>>>>> 194341fe5539221cf6471cedae13193559a2b82c
