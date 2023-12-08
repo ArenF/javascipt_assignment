@@ -1,4 +1,3 @@
-
 const button = document.getElementById("submit_button");
 
 const nameInput = document.getElementsByName("name")[0];
@@ -19,7 +18,6 @@ for (i = 0; i < subjectInputs.length; i++) {
 
 button.addEventListener("click", (event) => {
     event.preventDefault();
-
 
     // 초기화
     codeInput.value = '';

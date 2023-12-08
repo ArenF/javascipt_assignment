@@ -34,7 +34,8 @@ login_btn.addEventListener("click", (event) => {
     };
 
     const formData = new FormData();
-    formData.append("id", id); formData.append("pass", pass);
+    formData.append("id", id);
+    formData.append("pass", pass);
     const payload = new URLSearchParams(formData);
 
     fetch("/login", {
@@ -43,6 +44,6 @@ login_btn.addEventListener("click", (event) => {
         body: payload
     })
     .then(response => response.json())
-    .then(data => console.log(data))
+    .then(json => console.log(json))
     .catch(err => console.error(err));
 });
