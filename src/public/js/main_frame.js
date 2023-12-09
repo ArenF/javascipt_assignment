@@ -7,6 +7,7 @@ for (i = 0; i < buttons.length; i++) {
 
     btn.addEventListener("click", (event) => {
         event.preventDefault();
-        console.log("Hello world!");
-    })
+
+        
+    });
 }

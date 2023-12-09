@@ -46,7 +46,6 @@ app.use("/login", loginRouter);
 app.use('/signup', signUpRouter);
 app.use('/table', tableRouter);
 
-
 //데이터베이스 설정
 const query = require('./public/js/query');
 
