@@ -16,11 +16,29 @@ button.addEventListener("click", (event) => {
     const scrEng = engInput.value;
     const scrMath = mathInput.value;
 
-    localStorage.setItem("stdName", stdName);
-    localStorage.setItem("stdCode", stdCode);
-    localStorage.setItem("scrKor", scrKor);
-    localStorage.setItem("scrEng", scrEng);
-    localStorage.setItem("scrMath", scrMath);
+    const user = {
+        stdName, stdCode, scrKor, scrEng, scrMath
+    };
+
+    const formData = new FormData();
+    formData.append("stdName", stdName);
+    formData.append("stdCode", stdCode);
+    formData.append("scrKor", scrKor);
+    formData.append("scrEng", scrEng);
+    formData.append("scrMath", scrMath);
+    const payload = new URLSearchParams(formData);
+
+    fetch("/table", {
+        method: 'POST',
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: payload
+    })
+    .then(response => response.json())
+    .then(data => {
+        if(data.message = "ok")
+        location.href = "/table";
+    })
+    .catch(err => console.log(err));
 });
 
 button.addEventListener("submit", button);
