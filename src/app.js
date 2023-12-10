@@ -10,6 +10,7 @@ const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
+const helmet = require('helmet');
 require('dotenv').config();
 
 // 서버 설정
@@ -28,6 +29,8 @@ app.use(session({
     saveUninitialized: true,
     store: new FileStore()
 }));
+app.use(helmet.frameguard());
+
 app.set('views', path.join(__dirname + "./views"));
 
 //서버 실행
@@ -39,14 +42,16 @@ server.listen(port, () => {
 const indexRouter = require("./router/index");
 const loginRouter = require("./router/login");
 const signUpRouter = require("./router/signup");
-const tableRouter = require("./router/table_input");
+const inputRouter = require("./router/table_input");
 const outputRouter = require("./router/table_output");
+const exchangeRouter = require("./router/exchange");
 
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use('/signup', signUpRouter);
-app.use('/input', tableRouter);
+app.use('/input', inputRouter);
 app.use('/table', outputRouter);
+app.use("/exchange", exchangeRouter);
 
 //데이터베이스 설정
 const query = require('./public/js/query');

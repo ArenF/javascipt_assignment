@@ -28,9 +28,7 @@ button.addEventListener("click", (event) => {
     formData.append("scrMath", scrMath);
     const payload = new URLSearchParams(formData);
 
-    console.log(user);
-
-    fetch("/table", {
+    fetch("/input", {
         method: 'POST',
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: payload
@@ -39,6 +37,7 @@ button.addEventListener("click", (event) => {
     .then(data => {
         if(data.message = "ok") {
             console.log("성공적으로 입력되었습니다.");
+            alert("값이 입력되었습니다.");
         }
     })
     .catch(err => console.log(err.message));

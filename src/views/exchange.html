@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            top: 30px;
+            color: white;
+            font-size: 30px;
+            text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .background-container {
+            background-image: url('/images/beach.jpg');
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 80px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #77d1e1;
+            font-size: 40px;
+        }
+
+        input, #afterValue {
+            padding: 10px;
+            margin-bottom: 16px;
+            font-size: 20px; 
+            border: 1px solid #5adedc; 
+            border-radius: 5px;
+            width: 200px;
+            color: #4b4b4b;
+        }
+
+        button {
+            cursor: pointer;
+            background-color: #5adedc;
+            color: white;
+            transition: background-color 0.3s ease;
+            padding: 10px;
+            font-size: 18px;
+            width: 100px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #3486bd;
+        }
+
+        #result-container {
+            margin-top: 20px;
+            color: #ffffff;
+            font-size: 24px; 
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 24px; 
+            color: #ffffff;
+        }
+    </style>
+    <script>
+        function calculateExchange() {
+            const exchangeRate = 0.00076;
+            const beforeValue = parseFloat(document.getElementById('beforeValue').value);
+            const afterValue = beforeValue * exchangeRate;
+            const formattedResult = new Intl.NumberFormat().format(afterValue);
+            document.getElementById('afterValue').value = formattedResult;
+        }
+    </script>
+</head>
+<body>
+    <div class="background-container">
+        <div class="form-container">
+            <h2>환율 계산기</h2>
+
+            <label for="beforeValue">입력값</label>
+            <input type="text" id="beforeValue" placeholder="숫자를 입력하세요">
+
+            <button onclick="calculateExchange()">바꾸기</button>
+
+            <div id="result-container">
+                <label for="afterValue">결과</label>
+                <input type="text" id="afterValue" readonly>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
