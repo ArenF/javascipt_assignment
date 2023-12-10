@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
     border: none;
-    --black: #000000c9;
+    --black: #000000d2;
     --ch-black: #141414;
     --eer-black: #1b1b1b;
     --night-rider: #2e2e2e;
@@ -11,15 +11,19 @@
     --tomato: #fa5656;
 }
 
+body {
+    background: url(/images/background_login3.jpg) no-repeat;
+}
+
 form {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, 50%);
     font-family: Helvetica, sans-serif;
-    padding: 25px;
+    padding: 75px;
     display: flex;
-    max-width: 420px;
+    max-width: 600px;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
@@ -27,7 +31,7 @@ form {
     background-color: var(--black);
     border-radius: 8px;
     position: relative;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, .1);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.432);
 }
 
 .info {
@@ -47,7 +51,7 @@ form {
 
 form .name-fields {
     display: flex;
-    height: 32px;
+    height: 40px;
     text-align: center;
     justify-content: space-between;
     gap: 10px;
@@ -79,9 +83,10 @@ form .name-fields input:focus {
 /* --- input fields 에 들어가는 것들 --- */
 
 form .input-fields {
+    margin-top : 10px;
     display: flex;
     justify-content: space-between;
-    gap: 10px;
+    gap: 50px;
 }
 
 form .input-fields input {
@@ -107,7 +112,7 @@ form .input-fields input:focus {
 
 form .action-btns {
     display: flex;
-    margin-top: 20px;
+    margin-top: 30px;
     gap: 0.5rem;
 }
 
