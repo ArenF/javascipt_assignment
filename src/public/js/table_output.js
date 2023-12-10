@@ -1,8 +1,23 @@
+//사이즈 재설정
 $(window).on("load resize ", function() {
     var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
     $('.tbl-header').css({'padding-right':scrollWidth});
   }).resize();
 
+  function outputTable(name, code, kor, eng, math) {
+    const tr = document.createElement(tr);
+    const td = document.createElement(td);
+
+    td.innerText = name;
+    td.innerText = code;
+    td.innerText = kor;
+    td.innerText = eng;
+    td.innerText = math;
+
+    tr.appendChild(td);
+  }
+
+//값 테이블
 function getTable(이름, 학번, 국어, 영어, 수학, 합계, 평균, 학점) {
 
     document.write("<table border = '1' width = '1000'>");
