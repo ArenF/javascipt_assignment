@@ -27,10 +27,11 @@ router.post("/", (req, res) => {
         query.run(makingTable);
     });
 
-    let user_id = 0;
 
     query.serialize(() => {
         const getUserIdSQL = `SELECT id FROM user WHERE username LIKE ?`;
+        let user_id = 0;
+
         query.get(getUserIdSQL, [`${user.username}`], (err, row) => {
             if (!err) {
                 user_id = row.id;
@@ -39,24 +40,22 @@ router.post("/", (req, res) => {
             } else {
                 res.status(403).send({ message: "It works error when calling databases" });
             }
-        });
-    });
 
-    query.serialize(() => {
-        const insertGradesSQL = `INSERT INTO grades(name, code, kor, eng, math, user_id) VALUES(?, ?, ?, ?, ?, ?);`;
+            const insertGradesSQL = `INSERT INTO grades(name, code, kor, eng, math, user_id) VALUES(?, ?, ?, ?, ?, ?);`;
 
-        query.run(insertGradesSQL, [`${stdName}`, `${stdCode}`, `${scrKor}`, `${scrEng}`, `${scrMath}`, `${user_id}`], (err) => {
-            if (err) {
-                res.status(403).send({ message: "there has no databases"});
-                return;
-            }
-            // 오류가 발생하지 않았을 때
-            if (user_id === null) {
-                console.log("user id is null");
-                res.status(403).send({ message: "user id is null" });
-                return;
-            }
-            res.status(200).send({ message: 'ok' });
+            query.run(insertGradesSQL, [`${stdName}`, `${stdCode}`, `${scrKor}`, `${scrEng}`, `${scrMath}`, `${user_id}`], (err) => {
+                if (err) {
+                    res.status(403).send({ message: "there has no databases" });
+                    return;
+                }
+                // 오류가 발생하지 않았을 때
+                if (user_id === null) {
+                    console.log("user id is null");
+                    res.status(403).send({ message: "user id is null" });
+                    return;
+                }
+                res.status(200).send({ message: 'ok' });
+            });
         });
     });
 
