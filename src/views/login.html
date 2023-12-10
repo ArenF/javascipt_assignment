@@ -10,7 +10,7 @@
 <body>
     <div class="line"></div>
     <div class="blur"></div>
-    <div class="wrap">
+    <form id="login-form" class="wrap">
         <div class="header">
             <h1>Login</h1>
             <br>
@@ -22,10 +22,16 @@
             <input type="password" id="password" name="pass" placeholder="Password">
         </div>
         <div class="remem">
-            <input id="isSave" type="checkbox"> 회원 정보를 저장
+            <div class="left-box">
+                <input id="isSave" type="checkbox">
+                <p>회원 정보를 저장</p>
+            </div>
+            <div class="right-box">
+                <p id="error-message">ID나 PASSWORD를 찾지 못하였습니다.</p>
+            </div>
         </div>
         <div class="end">
-            <input class="login-btn" type="button" value="로그인">
+            <input class="login-btn" type="submit" value="로그인">
         </div>
         <div class="find">
             <p>
@@ -33,7 +39,7 @@
                 <a href="/signup"> 회원 가입 </a>
             </p>
         </div>
-    </div>
+    </form>
     <script src="/js/script_login.js"></script>
 </body>
 </html>

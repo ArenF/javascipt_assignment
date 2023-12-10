@@ -101,3 +101,25 @@ body{
 .login-btn {
     box-shadow: 10px 5px 5px rgb(32, 32, 32);
 }
+
+/* 옆으로 나란히 세우기 */
+.wrap .remem {
+    display: inline-block;
+}
+
+.remem .left-box {
+    display: flex;
+    float: left;
+
+    margin-right: 8rem;
+}
+
+.remem .right-box {
+    float: right;
+    display: flex;
+    margin-left: 8rem;
+}
+
+#error-message {
+    color: red;
+}

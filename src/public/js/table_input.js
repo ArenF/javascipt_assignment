@@ -1,4 +1,3 @@
-
 const button = document.getElementById("submit_button");
 
 const nameInput = document.getElementsByName("name")[0];
@@ -29,6 +28,8 @@ button.addEventListener("click", (event) => {
     formData.append("scrMath", scrMath);
     const payload = new URLSearchParams(formData);
 
+    console.log(user);
+
     fetch("/table", {
         method: 'POST',
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -36,13 +37,12 @@ button.addEventListener("click", (event) => {
     })
     .then(response => response.json())
     .then(data => {
-        if(data.message = "ok")
-        location.href = "/table";
+        if(data.message = "ok") {
+            console.log("성공적으로 입력되었습니다.");
+        }
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.message));
 });
-
-button.addEventListener("submit", button);
 
 const subjectInputs = document.getElementsByClassName("subject");
 // const korInput = document.getElementsByName("sub_korean")[0];
@@ -60,7 +60,6 @@ for (i = 0; i < subjectInputs.length; i++) {
 
 button.addEventListener("click", (event) => {
     event.preventDefault();
-
 
     // 초기화
     codeInput.value = '';

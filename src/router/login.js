@@ -29,21 +29,26 @@ router.post("/", (req, res) => {
                 }
 
                 // console.log(`username : ${id}\npassword : ${pass}`);
-                
-                const user = {
-                    id, pass
-                };
+
 
                 // res.redirect("/login");
-                res.status(200).json(user);
+
+                res.status(200).send({ login: false });
+                // res.redirect("/login"); 
                 
                 // res.send('<script>alert("아이디 또는 비밀번호가 잘못되었습니다.");location.href="/login"</script>');
                 return;
                 
             } else {
-                req.session.loggedIn = true;
-                req.session.user = user;
-                res.send(`<script>window.location.href = "/";</script>`);
+                // 오류가 없을 때 이곳이 실행됨
+
+                if (row.username == id && row.password == pass) {
+                    req.session.loggedIn = true;
+                    req.session.user = row;
+                    res.status(200).json({ login: true });
+                } else {
+                    res.status(200).json({ login: true });
+                }
             }
         });
     });
