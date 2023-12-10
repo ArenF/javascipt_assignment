@@ -1,4 +1,3 @@
-
 const button = document.getElementById("submit_button");
 
 const nameInput = document.getElementsByName("name")[0];
@@ -28,6 +27,8 @@ button.addEventListener("click", (event) => {
     formData.append("scrEng", scrEng);
     formData.append("scrMath", scrMath);
     const payload = new URLSearchParams(formData);
+
+    console.log(user);
 
     fetch("/table", {
         method: 'POST',
