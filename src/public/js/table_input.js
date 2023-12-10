@@ -28,6 +28,8 @@ button.addEventListener("click", (event) => {
     formData.append("scrMath", scrMath);
     const payload = new URLSearchParams(formData);
 
+    console.log(user);
+
     fetch("/table", {
         method: 'POST',
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
