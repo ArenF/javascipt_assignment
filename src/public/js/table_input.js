@@ -35,13 +35,12 @@ button.addEventListener("click", (event) => {
     })
     .then(response => response.json())
     .then(data => {
-        if(data.message = "ok")
-        location.href = "/table";
+        if(data.message = "ok") {
+            console.log("성공적으로 입력되었습니다.");
+        }
     })
-    .catch(err => console.log(err));
+    .catch(err => console.log(err.message));
 });
-
-button.addEventListener("submit", button);
 
 const subjectInputs = document.getElementsByClassName("subject");
 // const korInput = document.getElementsByName("sub_korean")[0];

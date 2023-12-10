@@ -39,19 +39,21 @@ server.listen(port, () => {
 const indexRouter = require("./router/index");
 const loginRouter = require("./router/login");
 const signUpRouter = require("./router/signup");
-const tableRouter = require("./router/table");
+const tableRouter = require("./router/table_input");
+const outputRouter = require("./router/table_output");
 
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use('/signup', signUpRouter);
-app.use('/table', tableRouter);
+app.use('/input', tableRouter);
+app.use('/table', outputRouter);
 
 //데이터베이스 설정
 const query = require('./public/js/query');
 
 query.serialize(() => {
     //SQL문 user 테이블 존재하지 않을 시 테이블 생성
-    query.each("CREATE TABLE IF NOT EXISTS user(id integer primary key autoincrement, username text, password text)");
+    query.run("CREATE TABLE IF NOT EXISTS user(id integer primary key autoincrement, username text, password text)");
 
     // 테스트 코드용 데이터베이스 전체 조회
 
