@@ -1,3 +1,8 @@
+$(window).on("load resize ", function() {
+    var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
+    $('.tbl-header').css({'padding-right':scrollWidth});
+  }).resize();
+
 function getTable(이름, 학번, 국어, 영어, 수학, 합계, 평균, 학점) {
 
     const myArray = new Array();
