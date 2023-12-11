@@ -1,12 +1,30 @@
-//사이즈 재설정
-$(window).on("load resize ", function() {
-    var scrollWidth = $('.tbl-content').width() - $('.tbl-content table').width();
-    $('.tbl-header').css({'padding-right':scrollWidth});
-  }).resize();
 
 const tableBody = document.getElementById("table_output");
 
-  function outputTable(name, code, kor, eng, math) {
+window.onload = () => {
+
+    fetch("/table/getTable", {
+        method: 'GET'
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.isLogin === false) {
+            alert("로그인이 필요합니다.");
+            location.href = "/login";
+            return;
+        }
+
+        const body = result.body;
+
+        body.forEach(element => {
+            outputTable(element.name, element.code, element.kor, element.eng, element.math);
+        });
+    })
+    .catch(err => console.error(err.message));
+    // outputTable("홍길동", "13245454", 80, 85, 75);
+}
+
+function outputTable(name, code, kor, eng, math) {
     const tr = document.createElement("tr");
     const tdName = document.createElement("td");
     const tdCode = document.createElement("td");
@@ -17,7 +35,10 @@ const tableBody = document.getElementById("table_output");
     const tdGr = document.createElement("td");
 
     const sum = kor + eng + math;
-    const avg = sum / 3;
+    const avg = (sum / 3).toFixed(2);
+
+    tdCode.className = "num";
+    tdGr.className = "grade";
 
     tdName.innerText = name;
     tdCode.innerText = code;
@@ -44,19 +65,6 @@ const tableBody = document.getElementById("table_output");
     tr.appendChild(tdMath);
     tr.appendChild(tdAvg);
     tr.appendChild(tdGr);
-  }
 
-//값 테이블
-function getTable(이름, 학번, 국어, 영어, 수학, 평균, 학점) {
-
-    document.write("<table border = '1' width = '1000'>");
-    document.write("<tr><td>이름</td><td>학번</td><td>국어</td><td>영어</td><td>수학</td><td>합계</td><td>평균</td><td>학점</td></tr>");
-    for(i = 0; i< myArray.length; i++) {
-        document.write("<tr>");
-        for(j = 0; j < myArray[i].length; j++) {
-            document.write("<td>" + myArray[i][j] + "</td>");
-        }
-        document.write("</tr>");
-    }
-    document.write("</table>");
+    tableBody.appendChild(tr);
 }
