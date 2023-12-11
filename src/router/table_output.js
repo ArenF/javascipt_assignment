@@ -4,7 +4,8 @@ const query = require('../public/js/query');
 const router = express.Router();
 
 router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../views/table_output.html"));
+    // res.sendFile(path.join(__dirname, "../views/table_output.html"));
+    res.render('table_output.ejs');
 });
 
 router.get("/getTable", (req, res) => {

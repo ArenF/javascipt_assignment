@@ -31,7 +31,8 @@ app.use(session({
 }));
 app.use(helmet.frameguard());
 
-app.set('views', path.join(__dirname + "./views"));
+app.set('view engine', 'ejs');
+app.set('views', path.join(__dirname, "views"));
 
 //서버 실행
 server.listen(port, () => {

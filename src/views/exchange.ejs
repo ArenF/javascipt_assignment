@@ -90,20 +90,31 @@
     </script>
 </head>
 <body>
-    <div class="background-container">
-        <div class="form-container">
-            <h2>환율 계산기</h2>
+    <%- include('navbar.ejs') %>
+    <h2>환율 계산기</h2>
+    <label for="exchangeRate">환율 (1 단위당 목표 통화로 변환되는 금액):</label>
+    <input type="number" id="exchangeRate" step="0.01" placeholder="환율을 입력하세요" required>
+    
+    <label for="amount">금액</label>
+    <input type="number" id="amount" step="0.01" placeholder="금액을 입력하세요" required>
+    
+    <button onclick="calculateExchange()">계산</button>
+    
+    <div id="result"></div>
+    
+    <script>
+        function calculateExchange() {
+            const exchangeRate = parseFloat(document.getElementById('exchangeRate').value);
+            const amount = parseFloat(document.getElementById('amount').value);
 
-            <label for="beforeValue">입력값</label>
-            <input type="text" id="beforeValue" placeholder="숫자를 입력하세요">
+            if (isNaN(exchangeRate) || isNaN(amount)) {
+                alert('올바른 숫자를 입력하세요.');
+                return;
+            }
 
-            <button onclick="calculateExchange()">바꾸기</button>
-
-            <div id="result-container">
-                <label for="afterValue">결과</label>
-                <input type="text" id="afterValue" readonly>
-            </div>
-        </div>
-    </div>
+            const result = amount * exchangeRate;
+            document.getElementById('result').innerText = `계산 결과 —> ${result.toFixed(2)}`;
+        }
+    </script>
 </body>
 </html>

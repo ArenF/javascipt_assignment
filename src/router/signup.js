@@ -26,7 +26,8 @@ router.post("/", (req, res) => {
 });
 
 router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../views/signup.html"));
+    // res.sendFile(path.join(__dirname, "../views/signup.html"));
+    res.render('signup');
 });
 
 module.exports = router;

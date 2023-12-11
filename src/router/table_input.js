@@ -10,7 +10,8 @@ router.get("/", (req, res) => {
         return;
     }
 
-    res.sendFile(path.join(__dirname, "../views/table_input.html"));
+    // res.sendFile(path.join(__dirname, "../views/table_input.html"));
+    res.render('table_input');
 });
 
 router.post("/", (req, res) => {

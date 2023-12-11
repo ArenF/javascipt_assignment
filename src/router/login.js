@@ -9,7 +9,8 @@ const query = require("../public/js/query");
 // /login 링크에 post 와 get 방식을 모두 사용
 
 router.get("/", (req, res) => {
-    res.sendFile(path.join(__dirname, "../views/login.html"));
+    // res.sendFile(path.join(__dirname, "../views/login.html"));
+    res.render('login');
 });
 
 router.post("/", (req, res) => {
