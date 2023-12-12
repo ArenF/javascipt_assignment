@@ -64,6 +64,11 @@
         <a class="nav" href="/table">Grades</a>
         <a class="nav" href="/exchange">Exchange Rate</a>
         <a class="nav" href="/input">Input</a>
-        <a class="nav" href="/login">Login</a>
-    </nav>
+
+        <% if (login) { %>
+            <a class="nav" href="/login">Login</a>
+        <% } else { %>
+            <a class="nav" onclick="click_to_logout()">Logout</a>
+        <% } %>
 </header>
+<script src="js/script_logout.js"></script>

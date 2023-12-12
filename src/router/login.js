@@ -10,7 +10,9 @@ const query = require("../public/js/query");
 
 router.get("/", (req, res) => {
     // res.sendFile(path.join(__dirname, "../views/login.html"));
-    res.render('login');
+    res.render('login', {
+        login: !req.session.loggedIn
+    });
 });
 
 router.post("/", (req, res) => {

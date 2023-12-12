@@ -11,7 +11,9 @@ router.get("/", (req, res) => {
     }
 
     // res.sendFile(path.join(__dirname, "../views/table_input.html"));
-    res.render('table_input');
+    res.render('table_input', {
+        login: !req.session.loggedIn
+    });
 });
 
 router.post("/", (req, res) => {

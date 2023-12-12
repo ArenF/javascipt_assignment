@@ -42,6 +42,7 @@ server.listen(port, () => {
 //라우터 설정
 const indexRouter = require("./router/index");
 const loginRouter = require("./router/login");
+const logoutRouter = require("./router/logout");
 const signUpRouter = require("./router/signup");
 const inputRouter = require("./router/table_input");
 const outputRouter = require("./router/table_output");
@@ -49,6 +50,7 @@ const exchangeRouter = require("./router/exchange");
 
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
+app.use("/logout", logoutRouter);
 app.use('/signup', signUpRouter);
 app.use('/input', inputRouter);
 app.use('/table', outputRouter);

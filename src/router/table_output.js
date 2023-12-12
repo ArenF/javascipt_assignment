@@ -5,7 +5,9 @@ const router = express.Router();
 
 router.get("/", (req, res) => {
     // res.sendFile(path.join(__dirname, "../views/table_output.html"));
-    res.render('table_output.ejs');
+    res.render('table_output', {
+        login: !req.session.loggedIn
+    });
 });
 
 router.get("/getTable", (req, res) => {
