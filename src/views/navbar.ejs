@@ -17,6 +17,10 @@
         height: 110px;
     }
 
+    .navbar {
+        padding-right:120px;
+    }
+
     .navbar a {
         position: relative;
         font-size: 22px;
@@ -57,10 +61,11 @@
     }
 </style>
 <header class="header">
-    <img src="/images/java.png" class="logo">
-
+    <a href="/">
+        <img src="/images/java.png" style="-webkit-user-drag: none;" class="logo" href>
+    </a>
     <nav class="navbar">
-        <a class="nav" href="#">Home</a>
+        <a class="nav" href="/">Home</a>
         <a class="nav" href="/table">Grades</a>
         <a class="nav" href="/exchange">Exchange Rate</a>
         <a class="nav" href="/input">Input</a>
